@@ -21,7 +21,7 @@ namespace CInvestimentos.Services
         {
             try
             {
-                return _repository.GetAll();
+                return _repository.GetListInvestidores();
             }
             catch (Exception)
             {
@@ -33,7 +33,7 @@ namespace CInvestimentos.Services
         {
             try
             {
-                return _repository.GetById(id).Result; 
+                return _repository.GetInvestidor(id); 
             }
             catch (Exception)
             {
@@ -54,7 +54,7 @@ namespace CInvestimentos.Services
                 throw;
             }
         }
-        public Task<Investidor> Update(Investidor investidor)
+        public async Task<Investidor> Update(Investidor investidor)
         {
             try
             {

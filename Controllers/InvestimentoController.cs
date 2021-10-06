@@ -1,3 +1,4 @@
+using System.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,11 +46,11 @@ namespace CInvestimentos.Controllers
         }
 
         [HttpPost("criar")]
-        public ActionResult<Investimento> Add(Investimento investimento)
+        public ActionResult<Investimento> Add(Investimento investimentos)
         {
             try
             {
-                return Ok(_service.Add(investimento));
+                return Ok(_service.Add(investimentos).Result);
             }
             catch (Exception)
             {
@@ -58,11 +59,11 @@ namespace CInvestimentos.Controllers
         }
 
         [HttpPut("atualizar")]
-        public ActionResult<Investimento> Update(Investimento investimento)
+        public async Task<IActionResult> Updates(Investimento investimentos)
         {
-            try
+           try
             {
-                return Ok(_service.Update(investimento));
+                return Ok(await _service.Update(investimentos).ConfigureAwait(false));
             }
             catch (Exception)
             {
@@ -72,11 +73,11 @@ namespace CInvestimentos.Controllers
 
 
         [HttpDelete("remover")]
-        public ActionResult<bool> Delete(int id, Investimento investimento)
+        public async Task<IActionResult> Delete(int id, Investimento investimentos)
         {
             try
             {
-                return Ok(_service.Delete(id,investimento));
+                return Ok(_service.Delete(id,investimentos));
             }
             catch (Exception)
             {

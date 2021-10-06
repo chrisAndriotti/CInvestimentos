@@ -10,8 +10,8 @@ namespace CInvestimentos.Services.Interface
     {
         IEnumerable<Investimento> GetList();
         Investimento GetById(int id);
-        Task<Investimento> Add(Investimento investimento);
-        Task<Investimento> Update(Investimento investimento);
-        bool Delete(int id,Investimento investimento);
+        Task<Investimento> Add(Investimento investimentos);
+        Task<bool> Update(Investimento investimentos);
+        bool Delete(int id,Investimento investimentos);
     }
 }

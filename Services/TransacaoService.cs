@@ -35,7 +35,7 @@ namespace CInvestimentos.Services
         {
             try
             {
-                return _transacaoRepository.GetById(id).Result; 
+                return _transacaoRepository.GetById(id); 
             }
             catch (Exception)
             {
@@ -47,17 +47,37 @@ namespace CInvestimentos.Services
         {
             try
             {
-                
+                var investidor =_investidorRepository.GetById(transacao.InvestidorId);
+
+                if(investidor != null)
+                {
+                    if(transacao.TipoTransacao == ETransacoes.Saque || transacao.TipoTransacao == ETransacoes.Compra)
+                    {
+                        if(investidor.SaldoEmConta >= transacao.Valor)
+                        {
+                            investidor.SaldoEmConta -= transacao.Valor;
+                        }
+                    }
+                    else if(transacao.TipoTransacao == ETransacoes.Deposito || transacao.TipoTransacao == ETransacoes.Venda)
+                    {
+                        investidor.SaldoEmConta += transacao.Valor;
+                    }
+                }
+
                 _transacaoRepository.Add(transacao);
                 _transacaoRepository.SaveChanges();
-                return GetById(transacao.Id);
+
+                _investidorRepository.Update(investidor);
+                await _investidorRepository.SaveChangesAsync();
+
+                return  GetById(transacao.Id);
             }
             catch (Exception)
             {
                 throw;
             }
         }
-        public Task<Transacao> Update(Transacao transacao)
+        public async Task<Transacao> Update(Transacao transacao)
         {
             try
             {

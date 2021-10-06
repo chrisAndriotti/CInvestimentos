@@ -19,7 +19,7 @@ namespace CInvestimentos.Controllers
         }
 
         [HttpGet("lista")]
-        public ActionResult<IEnumerable<Venda>> List()
+        public IActionResult List()
         {
             try
             {
@@ -32,7 +32,7 @@ namespace CInvestimentos.Controllers
         }
 
         [HttpGet("buscar/{id}")]
-        public ActionResult<Venda> GetById(int id)
+        public IActionResult GetById(int id)
         {
             try
             {
@@ -45,11 +45,11 @@ namespace CInvestimentos.Controllers
         }
 
         [HttpPost("criar")]
-        public ActionResult<Venda> Add(Venda venda)
+        public async Task<IActionResult> Add(Venda venda)
         {
             try
             {
-                return Ok(_service.Add(venda));
+                return Ok(await _service.Add(venda).ConfigureAwait(false));
             }
             catch (Exception)
             {
@@ -58,11 +58,11 @@ namespace CInvestimentos.Controllers
         }
 
         [HttpPut("atualizar")]
-        public ActionResult<Venda> Update(Venda venda)
+        public async Task<IActionResult> Update(Venda venda)
         {
             try
             {
-                return Ok(_service.Update(venda));
+                return Ok(await _service.Update(venda).ConfigureAwait(false));
             }
             catch (Exception)
             {
@@ -72,11 +72,11 @@ namespace CInvestimentos.Controllers
 
 
         [HttpDelete("remover")]
-        public ActionResult<bool> Delete(int id, Venda venda)
+        public async Task<ActionResult> Delete(Venda venda)
         {
             try
             {
-                return Ok(_service.Delete(id,venda));
+                return Ok(await _service.Delete(venda).ConfigureAwait(false));
             }
             catch (Exception)
             {

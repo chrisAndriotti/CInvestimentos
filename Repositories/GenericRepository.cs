@@ -17,16 +17,15 @@ namespace CInvestimentos.Repositories
             _context = context;
         }
 
-         public IQueryable<TEntity> GetAll()
+        public IQueryable<TEntity> GetAll()
         {
             return  _context.Set<TEntity>().AsNoTracking();
         }
 
-        public async Task<TEntity> GetById(int id)
+        public TEntity GetById(int id)
         {
-            var result = await _context.Set<TEntity>()
-                        .AsNoTracking()
-                        .FirstOrDefaultAsync(e => e.Id == id);
+            var result = _context.Set<TEntity>()
+                        .FirstOrDefaultAsync(e => e.Id == id).Result;
             if(result == null)
             {
                 return null;
@@ -55,5 +54,54 @@ namespace CInvestimentos.Repositories
         {
             return (_context.SaveChanges() > 0);
         }
+
+         public async Task<bool> SaveChangesAsync()
+        {
+            return ( await _context.SaveChangesAsync(true) > 0);
+        }
+        public List<Investidor> GetListInvestidores()
+        {
+            IQueryable<Investidor> query = _context.Investidor;
+            query = query.Include(i => i.Investimentos).ThenInclude(a => a.Acao);
+            
+            return query.ToList();
+        }
+
+
+        public Investidor GetInvestidor(int id)
+        {
+            IQueryable<Investidor> query = _context.Investidor;
+            query = query.Include(i => i.Investimentos).ThenInclude(a => a.Acao);
+            query = query.AsNoTracking().Where(investidor => investidor.Id == id);
+            
+            return query.FirstOrDefault();
+        }
+
+        public List<Investimento> GetListInvestimentos()
+        {
+            IQueryable<Investimento> query = _context.Investimentos;
+            query = query.Include(i => i.Acao);
+            query = query.AsNoTracking().OrderBy(i => i.Id);
+            
+            return query.ToList();
+        }
+
+        public Investimento GetInvestimento(int id)
+        {
+            IQueryable<Investimento> query = _context.Investimentos;
+
+            query = query.Include(a => a.Acao);
+            query = query.Include(i => i.Investidor);
+
+            query = query.AsNoTracking().Where(investimento => investimento.Id == id);
+            
+            return query.FirstOrDefault();
+        }
+
+        // public Investimento InvestimentoPorInvestidor(int idInvestidor)
+        // {
+            
+            
+        // }
     }
 }

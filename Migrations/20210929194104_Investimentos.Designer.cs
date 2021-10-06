@@ -4,14 +4,16 @@ using CInvestimentos.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CInvestimentos.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20210929194104_Investimentos")]
+    partial class Investimentos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +63,7 @@ namespace CInvestimentos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Compra");
+                    b.ToTable("Compras");
                 });
 
             modelBuilder.Entity("CInvestimentos.Models.Investidor", b =>
@@ -91,7 +93,7 @@ namespace CInvestimentos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Investidor");
+                    b.ToTable("Investidores");
                 });
 
             modelBuilder.Entity("CInvestimentos.Models.Investimento", b =>
@@ -119,7 +121,7 @@ namespace CInvestimentos.Migrations
 
                     b.HasIndex("InvestidorId");
 
-                    b.ToTable("Investimentos");
+                    b.ToTable("Investimento");
                 });
 
             modelBuilder.Entity("CInvestimentos.Models.Transacao", b =>
@@ -150,7 +152,10 @@ namespace CInvestimentos.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("InvestimentoId")
+                    b.Property<int>("AcaoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InvestidorId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantidade")
@@ -161,7 +166,7 @@ namespace CInvestimentos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Venda");
+                    b.ToTable("Vendas");
                 });
 
             modelBuilder.Entity("CInvestimentos.Models.Investimento", b =>
@@ -170,7 +175,7 @@ namespace CInvestimentos.Migrations
                         .WithMany()
                         .HasForeignKey("AcaoId");
 
-                    b.HasOne("CInvestimentos.Models.Investidor", "Investidor")
+                    b.HasOne("CInvestimentos.Models.Investidor", null)
                         .WithMany("Investimentos")
                         .HasForeignKey("InvestidorId");
                 });

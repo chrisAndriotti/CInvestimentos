@@ -21,7 +21,7 @@ namespace CInvestimentos.Services
         {
             try
             {
-                return _repository.GetAll();
+                return _repository.GetListInvestimentos();
             }
             catch (Exception)
             {
@@ -33,7 +33,7 @@ namespace CInvestimentos.Services
         {
             try
             {
-                return _repository.GetById(id).Result; 
+                return _repository.GetInvestimento(id); 
             }
             catch (Exception)
             {
@@ -46,7 +46,7 @@ namespace CInvestimentos.Services
             try
             {
                 _repository.Add(investimento);
-                _repository.SaveChanges();
+                await _repository.SaveChangesAsync();
                 return GetById(investimento.Id);
             }
             catch (Exception)
@@ -54,14 +54,15 @@ namespace CInvestimentos.Services
                 throw;
             }
         }
-        public Task<Investimento> Update(Investimento investimento)
+        public Task<bool> Update(Investimento investimento)
         {
             try
             {
-                _repository.Update(investimento);
-                _repository.SaveChanges();
+                var entity = _repository.GetById(investimento.Id);
+                _repository.Update(entity);
 
-                return _repository.GetById(investimento.Id);
+            
+                return _repository.SaveChangesAsync();
             }
             catch (Exception)
             {

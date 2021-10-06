@@ -37,6 +37,7 @@ namespace CInvestimentos
             // services.AddDbContext<Context>();
             services.AddDbContext<Context>(options => options
             .UseSqlServer(Configuration
+            
             .GetConnectionString("DefaultConnection")));
 
             services.AddControllers().AddNewtonsoftJson(options =>
@@ -102,6 +103,8 @@ namespace CInvestimentos
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "CInvestimentos V1");
+                c.RoutePrefix = "swagger/ui";
+                // c.RoutePrefix = string.Empty; // define a rota. Com string.Empty a rota fica: localhost:5001/index.html
             });
 
             app.UseHttpsRedirection();

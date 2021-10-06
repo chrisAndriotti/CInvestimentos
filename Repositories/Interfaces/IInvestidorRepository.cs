@@ -8,6 +8,6 @@ namespace CInvestimentos.Repositories.Interfaces
 {
     public interface IInvestidorRepository : IGenericRepository<Investidor>
     {
-        
+        // List<Investidor> GetList();
     }
 }

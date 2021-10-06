@@ -33,7 +33,7 @@ namespace CInvestimentos.Services
         {
             try
             {
-                return _repository.GetById(id).Result; 
+                return _repository.GetById(id); 
             }
             catch (Exception)
             {
@@ -54,7 +54,7 @@ namespace CInvestimentos.Services
                 throw;
             }
         }
-        public Task<Acao> Update(Acao acao)
+        public async Task<Acao> Update(Acao acao)
         {
             try
             {

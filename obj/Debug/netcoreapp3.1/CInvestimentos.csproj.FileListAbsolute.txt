@@ -1,3 +1,9 @@
+C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.csprojAssemblyReference.cache
+C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.AssemblyInfoInputs.cache
+C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.AssemblyInfo.cs
+C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.csproj.CoreCompileInputs.cache
+C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -54,12 +60,6 @@ C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\bin\Debug\netcorea
 C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.csprojAssemblyReference.cache
-C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.AssemblyInfoInputs.cache
-C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.AssemblyInfo.cs
-C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.csproj.CoreCompileInputs.cache
-C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.RazorTargetAssemblyInfo.cache
 C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\CInvestimentos.csproj.CopyComplete
 C:\Users\andri\source\Workspace\CInvestimentos\CInvestimentos\obj\Debug\netcoreapp3.1\staticwebassets\CInvestimentos.StaticWebAssets.Manifest.cache

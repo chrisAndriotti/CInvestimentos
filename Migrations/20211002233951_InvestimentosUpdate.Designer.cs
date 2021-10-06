@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CInvestimentos.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210925182035_update")]
-    partial class update
+    [Migration("20211002233951_InvestimentosUpdate")]
+    partial class InvestimentosUpdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,9 @@ namespace CInvestimentos.Migrations
 
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -109,7 +112,7 @@ namespace CInvestimentos.Migrations
                     b.Property<int?>("InvestidorId")
                         .HasColumnType("int");
 
-                    b.Property<double>("Valor")
+                    b.Property<double>("ValorTotal")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
@@ -121,6 +124,27 @@ namespace CInvestimentos.Migrations
                     b.ToTable("Investimento");
                 });
 
+            modelBuilder.Entity("CInvestimentos.Models.Transacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("InvestidorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoTransacao")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Transacoes");
+                });
+
             modelBuilder.Entity("CInvestimentos.Models.Venda", b =>
                 {
                     b.Property<int>("Id")
@@ -128,10 +152,7 @@ namespace CInvestimentos.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AcaoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("InvestidorId")
+                    b.Property<int>("InvestimentoId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantidade")
@@ -151,7 +172,7 @@ namespace CInvestimentos.Migrations
                         .WithMany()
                         .HasForeignKey("AcaoId");
 
-                    b.HasOne("CInvestimentos.Models.Investidor", null)
+                    b.HasOne("CInvestimentos.Models.Investidor", "Investidor")
                         .WithMany("Investimentos")
                         .HasForeignKey("InvestidorId");
                 });

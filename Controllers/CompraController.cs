@@ -49,7 +49,7 @@ namespace CInvestimentos.Controllers
         {
             try
             {
-                return Ok(_service.Add(compra));
+                return Ok(_service.Add(compra).Result);
             }
             catch (Exception)
             {
@@ -62,7 +62,7 @@ namespace CInvestimentos.Controllers
         {
             try
             {
-                return Ok(_service.Update(compra));
+                return Ok(_service.Update(compra).Result);
             }
             catch (Exception)
             {

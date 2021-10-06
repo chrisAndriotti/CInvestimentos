@@ -49,7 +49,7 @@ namespace CInvestimentos.Controllers
         {
             try
             {
-                return Ok(_service.Add(investidor));
+                return Ok(_service.Add(investidor).Result);
             }
             catch (Exception)
             {
