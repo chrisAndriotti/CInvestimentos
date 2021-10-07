@@ -80,7 +80,7 @@ namespace CInvestimentos.Services
                         investimento.Ativo = false;
                     }
 
-                    var update = await _investimentoService.Update(investimento);
+                    var update = _investimentoService.Update(investimento);
 
                     Transacao deposito = new Transacao();
                     deposito.InvestidorId = investimento.Investidor.Id;

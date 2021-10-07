@@ -82,8 +82,11 @@ namespace CInvestimentos
                         Url = new Uri("https://cinvestimentos.com/license"),
                     }
 
-                    
                 });
+
+                // var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                // var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                // c.IncludeXmlComments(xmlPath);
             });
             
         }
@@ -103,8 +106,7 @@ namespace CInvestimentos
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "CInvestimentos V1");
-                c.RoutePrefix = "swagger/ui";
-                // c.RoutePrefix = string.Empty; // define a rota. Com string.Empty a rota fica: localhost:5001/index.html
+                c.RoutePrefix = String.Empty;
             });
 
             app.UseHttpsRedirection();

@@ -63,7 +63,7 @@ namespace CInvestimentos.Controllers
         {
            try
             {
-                return Ok(await _service.Update(investimentos).ConfigureAwait(false));
+                return Ok(_service.Update(investimentos));
             }
             catch (Exception)
             {

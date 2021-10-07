@@ -54,15 +54,19 @@ namespace CInvestimentos.Services
                 throw;
             }
         }
-        public Task<bool> Update(Investimento investimento)
+        public bool Update(Investimento investimento)
         {
             try
             {
                 var entity = _repository.GetById(investimento.Id);
-                _repository.Update(entity);
+
+                if(entity.Id == investimento.Id)
+                {
+                    _repository.Update(investimento);
+                }
 
             
-                return _repository.SaveChangesAsync();
+                return _repository.SaveChanges();
             }
             catch (Exception)
             {

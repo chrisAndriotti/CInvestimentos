@@ -11,7 +11,7 @@ namespace CInvestimentos.Services.Interface
         IEnumerable<Investimento> GetList();
         Investimento GetById(int id);
         Task<Investimento> Add(Investimento investimentos);
-        Task<bool> Update(Investimento investimentos);
+        bool Update(Investimento investimentos);
         bool Delete(int id,Investimento investimentos);
     }
 }

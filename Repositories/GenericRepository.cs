@@ -93,7 +93,7 @@ namespace CInvestimentos.Repositories
             query = query.Include(a => a.Acao);
             query = query.Include(i => i.Investidor);
 
-            query = query.AsNoTracking().Where(investimento => investimento.Id == id);
+            query = query.Where(investimento => investimento.Id == id);
             
             return query.FirstOrDefault();
         }

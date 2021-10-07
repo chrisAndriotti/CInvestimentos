@@ -18,55 +18,47 @@ namespace CInvestimentos.Controllers
             _service = service;
         }
 
+        /// <summary>
+        /// Buscar Investidores
+        /// </summary>  
         [HttpGet("lista")]
         public ActionResult<IEnumerable<Investidor>> List()
         {
-            try
-            {
-                return Ok(_service.GetList());
-            }
-            catch (Exception)
-            {
-                throw;
-            } 
+    
+            return Ok(_service.GetList());
+ 
         }
 
         [HttpGet("buscar/{id}")]
         public ActionResult<Investidor> GetById(int id)
         {
-            try
-            {
-                return Ok(_service.GetById(id));
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return Ok(_service.GetById(id));   
         }
 
         [HttpPost("criar")]
         public ActionResult<Investidor> Add(Investidor investidor)
         {
-            try
+ 
+            if(ModelState.IsValid)
             {
                 return Ok(_service.Add(investidor).Result);
             }
-            catch (Exception)
+            else
             {
-                throw;
+                return BadRequest(ModelState);
             }
         }
 
         [HttpPut("atualizar")]
         public ActionResult<Investidor> Update(Investidor investidor)
         {
-            try
+            if(ModelState.IsValid)
             {
                 return Ok(_service.Update(investidor));
             }
-            catch (Exception)
+            else
             {
-                throw;
+                return BadRequest(ModelState);
             }
         }
 
